@@ -1,6 +1,6 @@
 # vue-select-added
 
-> A Vue.js 2.0 input tag component
+> A Vue.js 2.0 select added component
 
 ## Installation
 

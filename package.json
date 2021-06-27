@@ -8,9 +8,9 @@
     "Editable select",
     "inputtag"
   ],
-  "author": "Jone <jone9050@qq.com>",
-  "repository": "",
-  "homepage": "",
+  "author": "Jone <jone.xue@qq.com>",
+  "repository": "https://github.com/XiaoNode/vue-select-added",
+  "homepage": "https://github.com/XiaoNode/vue-select-added",
   "license": "MIT",
   "main": "./dist/vueSelectAdded.common.js",
   "unpkg": "./dist/vueSelectAdded.umd.min.js",
