@@ -7,17 +7,17 @@
 #### NPM / Yarn
 
 ```bash
-npm install vue-input-tag --save
+npm install vue-select-add --save
 ```
 
 Then you need to import and register it:
 
 ```js
-import InputTag from "vue-select-added";
+import SelectAdded from "vue-select-added";
 ```
 
 ```js
-Vue.component("vue-select-added", vue - select - added);
+Vue.component("vue-select-added", vue-select-added);
 ```
 
 ## Usage
