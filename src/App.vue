@@ -1,0 +1,99 @@
+<template>
+  <div id="app">
+    <section class="page-header">
+      <h1 class="project-name">Vue Select Added 可添加多选框</h1>
+      <p>
+        Vue.js 2.0 component
+      </p>
+      <a class="btn">GitHub</a><a class="btn">NPM</a>
+    </section>
+
+    <section class="main-content">
+      <h3>Install</h3>
+      <p><code>npm install vue-select-added --save</code></p>
+      <!-- <p><code>yarn add vue-select-added</code></p> -->
+
+      <h3>Playground</h3>
+      <div class="playground">
+        <div class="form-group">
+          <p class="label">placeholder:</p>
+          <a-input v-model="placeholder" type="text" />
+        </div>
+        <div class="form-group">
+          <p class="label">readOnly:</p>
+          <input v-model="readOnly" type="checkbox" />
+        </div>
+
+        <div>
+          <span></span>
+          <h3>Preview</h3>
+          selectValue:{{ selectValue }}
+          <SelectAdded
+            :allArr="items"
+            :checkArr="selectValue"
+            v-model="selectValue"
+          />
+          <br />
+          selectValue:{{ selectValue2 }}
+          <SelectAdded
+            :allArr="items2"
+            :checkArr="selectValue2"
+            v-model="selectValue2"
+          />
+          <span></span>
+ 
+        </div>
+
+        <footer class="site-footer">
+          <span class="site-footer-credits">
+            <a href="#">blog</a>
+          </span>
+        </footer>
+      </div>
+    </section>
+  </div>
+</template>
+
+<script>
+import SelectAdded from "./components/SelectAdded.vue";
+
+export default {
+  name: "app",
+
+  components: {
+    SelectAdded,
+  },
+
+  data() {
+    return {
+      readOnly: false,
+      addTagOnBlur: false,
+      allowDuplicates: false,
+      placeholder: "Add Tag",
+      limit: 10,
+      htmlCode: "",
+      validate: "",
+      items: ["aa", "bb", "cc", "dd", "ee", "ff", "aaa"],
+      selectValue: ["dd"],
+
+      items2: ["11", "22", "33", "44", "55", "66","111"],
+      selectValue2: ["22"],
+    };
+  },
+
+  methods: {
+    getPreviewHTML() {},
+    // syncData(data) {
+    //   console.log(data);
+    //   this.$data.selectValue = data;
+    // },
+  },
+};
+</script>
+
+<style>
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+@import "styles/normalize.css";
+@import "styles/github-light.css";
+@import "styles/stylesheet.css";
+</style>
