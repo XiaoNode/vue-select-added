@@ -17,7 +17,9 @@ import SelectAdded from "vue-select-added";
 ```
 
 ```js
-Vue.component("vue-select-added", vue-select-added);
+components: {
+  SelectAdded;
+}
 ```
 
 ## Usage

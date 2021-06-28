@@ -5,7 +5,7 @@
       <p>
         Vue.js 2.0 component
       </p>
-      <a class="btn">GitHub</a><a class="btn">NPM</a>
+      <a class="btn" href="https://github.com/XiaoNode/vue-select-added" target="_blank">GitHub</a><a class="btn" href="https://www.npmjs.com/package/vue-select-added" target="_blank">NPM</a>
     </section>
 
     <section class="main-content">
@@ -19,10 +19,10 @@
           <p class="label">placeholder:</p>
           <a-input v-model="placeholder" type="text" />
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
           <p class="label">readOnly:</p>
           <input v-model="readOnly" type="checkbox" />
-        </div>
+        </div> -->
 
         <div>
           <span></span>
