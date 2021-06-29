@@ -9,7 +9,7 @@
       <div slot="content">
         <div class="open">
           <a-input
-            placeholder="search"
+            :placeholder="searchText"
             v-model="searchVal"
             :allowClear="true"
             @change="goSearch"
@@ -56,7 +56,7 @@
             </ul>
           </div>
           <div v-else class="me-pb-2 me-pt-2">
-            未搜索到相关结果
+            {{ searchResultText }}
           </div>
         </div>
         <div class="additem">
@@ -67,7 +67,7 @@
           <div class="addinput" v-if="addtemping">
             <a-space>
               <a-input
-                placeholder="添加一个新属性值"
+                :placeholder="addItemText"
                 v-model="addtemp"
                 :allowClear="true"
               >
@@ -122,27 +122,46 @@
 <script>
 import { without, indexOf } from "lodash";
 export default {
-  // model: {
-  //   prop: 'items',
-  //   event: 'input'
-  // },
+  model: {
+    prop: "product",
+    event: "input",
+  },
   props: {
-    allArr: {
-      type: Array,
+    product: {
+      prop: Array,
+      default: [],
     },
-    checkArr: {
-      type: Array,
+    allArr: {
+      prop: Array,
+      default: [],
     },
     multiple: {
       type: Boolean,
       default: true,
     },
+    readOnly: {
+      type: Boolean,
+      default: false,
+    },
+    searchText: {
+      type: String,
+      default: "请输入",
+    },
+    searchResultText: {
+      type: String,
+      default: "未搜索到相关内容",
+    },
+    addItemText: {
+      type: String,
+      default: "添加一个新项",
+    },
   },
   mounted() {
     this.$data.items = this.$props.allArr;
-    this.$data.selectValue = this.$props.checkArr;
+    this.$data.selectValue = this.$props.product;
   },
   data: () => ({
+    primaryColor: "#ff6b38",
     items: [],
     selectValue: [],
     searchVal: "",
@@ -222,7 +241,7 @@ $linkColor: #4c86ff;
     border: 1px solid #d9d9d9;
     border-radius: 2px;
     line-height: 32px;
-    height: 32px;
+    min-height: 32px;
     cursor: pointer;
     background: #fff;
     &:focus {
@@ -243,12 +262,40 @@ $linkColor: #4c86ff;
         border-radius: 2px;
         height: 24px;
         margin-top: 3px;
-        line-height: 22px;
+        line-height: 24px;
+        font-size: 14px;
         span {
           transform: padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
         }
       }
     }
+  }
+}
+.additem,
+.searchval,
+.allval {
+  ul {
+    padding-left: 0px;
+  }
+  li {
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 16px;
+    color: #333;
+    word-break: break-word;
+    word-wrap: break-word;
+    list-style: none;
+    cursor: pointer;
+    &:hover {
+      color: #333;
+      background-color: rgba(0, 0, 0, 0.04);
+    }
+    &.active {
+      color: $primaryColor;
+    }
+  }
+  .me-fr {
+    float: right;
   }
 }
 .popoverbox {
@@ -257,32 +304,14 @@ $linkColor: #4c86ff;
   border-radius: 3px;
   margin-top: 3px;
 }
-ul {
-  padding-left: 0px;
-}
-li {
-  padding: 8px 12px;
-  font-size: 14px;
-  line-height: 16px;
-  color: #333;
-  word-break: break-word;
-  word-wrap: break-word;
-  list-style: none;
-  cursor: pointer;
-  &:hover {
-    color: #333;
-    background-color: rgba(0, 0, 0, 0.04);
-  }
-  &.active {
-    color: $primaryColor;
-  }
-}
+
 .additem {
   border-top: 1px solid #e8e8e8;
   h3 {
     height: 35px;
     line-height: 35px;
     color: $linkColor;
+    margin-bottom:0px;
   }
 }
 .ant-popover-inner-content {
@@ -295,5 +324,18 @@ li {
 }
 .hand {
   cursor: pointer;
+}
+.me-pb-2 {
+  padding-bottom: 10px;
+}
+.me-pt-2 {
+  padding-top: 10px;
+}
+.me-pt-1 {
+  padding-top: 5px;
+}
+.me-status-skip {
+  color: #a8a8b3;
+  font-size:12px;
 }
 </style>

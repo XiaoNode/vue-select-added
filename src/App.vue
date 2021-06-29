@@ -5,43 +5,35 @@
       <p>
         Vue.js 2.0 component
       </p>
-      <a class="btn" href="https://github.com/XiaoNode/vue-select-added" target="_blank">GitHub</a><a class="btn" href="https://www.npmjs.com/package/vue-select-added" target="_blank">NPM</a>
+      <a
+        class="btn"
+        href="https://github.com/XiaoNode/vue-select-added"
+        target="_blank"
+        >GitHub</a
+      ><a
+        class="btn"
+        href="https://www.npmjs.com/package/vue-select-added"
+        target="_blank"
+        >NPM</a
+      >
     </section>
 
     <section class="main-content">
       <h3>Install</h3>
-      <p><code>npm install vue-select-added --save</code></p>
-      <!-- <p><code>yarn add vue-select-added</code></p> -->
+      <p><code>npm install vue-select-added</code></p>
+      <p><code>yarn add vue-select-added</code></p>
 
-      <h3>Playground</h3>
+      <!-- <h3>Playground</h3> -->
       <div class="playground">
-        <div class="form-group">
-          <p class="label">placeholder:</p>
-          <a-input v-model="placeholder" type="text" />
-        </div>
-        <!-- <div class="form-group">
-          <p class="label">readOnly:</p>
-          <input v-model="readOnly" type="checkbox" />
-        </div> -->
-
         <div>
           <span></span>
           <h3>Preview</h3>
           selectValue:{{ selectValue }}
-          <SelectAdded
-            :allArr="items"
-            :checkArr="selectValue"
-            v-model="selectValue"
-          />
+          <SelectAdded :allArr="items" v-model="selectValue" />
           <br />
           selectValue:{{ selectValue2 }}
-          <SelectAdded
-            :allArr="items2"
-            :checkArr="selectValue2"
-            v-model="selectValue2"
-          />
+          <SelectAdded :allArr="items2" v-model="selectValue2" />
           <span></span>
- 
         </div>
 
         <footer class="site-footer">
@@ -76,7 +68,7 @@ export default {
       items: ["aa", "bb", "cc", "dd", "ee", "ff", "aaa"],
       selectValue: ["dd"],
 
-      items2: ["11", "22", "33", "44", "55", "66","111"],
+      items2: ["11", "22", "33", "44", "55", "66", "111"],
       selectValue2: ["22"],
     };
   },
