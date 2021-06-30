@@ -11,7 +11,7 @@
 #### NPM / Yarn
 
 ```bash
-npm install vue-select-add --save
+npm install vue-select-added --save
 ```
 
 Then you need to import and register it:
