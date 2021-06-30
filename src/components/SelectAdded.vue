@@ -62,7 +62,7 @@
         <div class="additem">
           <h3 class="hand" @click="addtemping = !addtemping">
             <a-icon type="plus" class="me-status-link" />
-            添加一个新属性值
+            {{ addItemButtonText }}
           </h3>
           <div class="addinput" v-if="addtemping">
             <a-space>
@@ -147,6 +147,10 @@ export default {
       type: String,
       default: "未搜索到相关内容",
     },
+    addItemButtonText: {
+      type: String,
+      default: "添加一个新属性值",
+    },
     addItemText: {
       type: String,
       default: "添加一个新项",
@@ -229,7 +233,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$primaryColor: #ff6b38;
+$primaryColor: #4c86ff;
 $linkColor: #4c86ff;
 .me-select-input {
   position: relative;
@@ -274,7 +278,7 @@ $linkColor: #4c86ff;
     padding-left: 0px;
   }
   li {
-    padding: 8px 12px;
+    padding: 8px 5px;
     font-size: 14px;
     line-height: 16px;
     color: #333;
@@ -307,7 +311,7 @@ $linkColor: #4c86ff;
     height: 35px;
     line-height: 35px;
     color: $linkColor;
-    margin-bottom:0px;
+    margin-bottom: 0px;
   }
 }
 .ant-popover-inner-content {
@@ -332,6 +336,6 @@ $linkColor: #4c86ff;
 }
 .me-status-skip {
   color: #a8a8b3;
-  font-size:12px;
+  font-size: 12px;
 }
 </style>

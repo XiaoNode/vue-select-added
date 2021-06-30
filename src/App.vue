@@ -34,7 +34,7 @@
           selectValue:{{ selectValue2 }}
           <SelectAdded :allArr="items2" v-model="selectValue2" />
           <span></span>
-        </div>
+        </div>      
 
         <footer class="site-footer">
           <span class="site-footer-credits">
