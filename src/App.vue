@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <section class="page-header">
-      <h1 class="project-name">Vue Select Added 可添加多选框</h1>
+      <h1 class="project-name">Vue Select Added 可添加选项多选框</h1>
       <p>
-        Vue.js 2.0 component
+        a Multiple options box can be added component Vue.js
       </p>
       <a
         class="btn"

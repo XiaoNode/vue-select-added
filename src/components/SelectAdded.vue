@@ -161,7 +161,6 @@ export default {
     this.$data.selectValue = this.$props.product;
   },
   data: () => ({
-    primaryColor: "#ff6b38",
     items: [],
     selectValue: [],
     searchVal: "",
