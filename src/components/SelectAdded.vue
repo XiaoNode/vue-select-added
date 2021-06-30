@@ -135,10 +135,6 @@ export default {
       prop: Array,
       default: [],
     },
-    multiple: {
-      type: Boolean,
-      default: true,
-    },
     readOnly: {
       type: Boolean,
       default: false,
