@@ -58,28 +58,13 @@ export default {
 
   data() {
     return {
-      readOnly: false,
-      addTagOnBlur: false,
-      allowDuplicates: false,
-      placeholder: "Add Tag",
-      limit: 10,
-      htmlCode: "",
-      validate: "",
       items: ["aa", "bb", "cc", "dd", "ee", "ff", "aaa"],
       selectValue: ["dd"],
 
       items2: ["11", "22", "33", "44", "55", "66", "111"],
       selectValue2: ["22"],
     };
-  },
-
-  methods: {
-    getPreviewHTML() {},
-    // syncData(data) {
-    //   console.log(data);
-    //   this.$data.selectValue = data;
-    // },
-  },
+  }
 };
 </script>
 
