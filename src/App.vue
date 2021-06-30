@@ -3,7 +3,7 @@
     <section class="page-header">
       <h1 class="project-name">Vue Select Added 可添加选项多选框</h1>
       <p>
-        a Multiple options box can be added component Vue.js
+        a Multiple options box can be added component of Vue.js
       </p>
       <a
         class="btn"
