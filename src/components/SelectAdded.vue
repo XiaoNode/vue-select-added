@@ -239,8 +239,7 @@ $linkColor: #4c86ff;
   .input {
     border: 1px solid #d9d9d9;
     border-radius: 2px;
-    line-height: 32px;
-    min-height: 32px;
+    line-height: 23px;
     cursor: pointer;
     background: #fff;
     &:focus {
@@ -248,6 +247,8 @@ $linkColor: #4c86ff;
     }
     ul {
       padding-left: 10px;
+      display: inline-block;
+      margin: 0px;
       li {
         position: relative;
         float: left;
