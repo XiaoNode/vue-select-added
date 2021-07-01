@@ -1,10 +1,10 @@
 <template>
-  <div class="me-select-input">
+  <div class="me-select-input" :class="{ readonly: readOnly }">
     <a-popover
       placement="bottomLeft"
       trigger="click"
       overlayClassName="popoverbox"
-      @visibleChange="onVisibleChange"
+      v-if="!readOnly"
     >
       <div slot="content">
         <div class="open">
@@ -103,7 +103,10 @@
           </div>
         </div>
       </div>
-      <div class="input" @click.self="openDialog">
+      <div
+        class="input"
+        @click.self="openDialog"
+      >
         <ul>
           <li v-for="item in selectValue" :key="item">
             <span class="me-pr-1"> {{ item }} </span>
@@ -116,6 +119,23 @@
         </ul>
       </div>
     </a-popover>
+    <div
+      class="input"
+      @click.self="openDialog"
+      :class="{ readonly: readOnly }"
+      v-else
+    >
+      <ul>
+        <li v-for="item in selectValue" :key="item">
+          <span class="me-pr-1"> {{ item }} </span>
+          <a-icon
+            type="close"
+            class="hand me-status-skip me-fr me-pt-1"
+            :class="{ readonlyclose: readOnly }"
+          />
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -337,5 +357,12 @@ $linkColor: #4c86ff;
 .me-status-skip {
   color: #a8a8b3;
   font-size: 12px;
+}
+.readonly {
+  cursor: no-drop !important;
+  background: #f3f2f2 !important;
+}
+.readonlyclose {
+  cursor: no-drop !important;
 }
 </style>

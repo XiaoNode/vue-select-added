@@ -29,7 +29,7 @@
           <span></span>
           <h3>Preview</h3>
           selectValue:{{ selectValue }}
-          <SelectAdded :allArr="items" v-model="selectValue" />
+          <SelectAdded :allArr="items" v-model="selectValue" :readOnly="true" />
           <br />
           selectValue:{{ selectValue2 }}
           <SelectAdded :allArr="items2" v-model="selectValue2" />
