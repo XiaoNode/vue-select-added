@@ -32,7 +32,7 @@
           <SelectAdded :allArr="items" v-model="selectValue" />
           <br />
           selectValue:{{ selectValue2 }}
-          <SelectAdded :allArr="items2" v-model="selectValue2" />
+          <SelectAdded :allArr="items2" :multiple="false" v-model="selectValue2" />
           <span></span>
         </div>
 

@@ -1,10 +1,12 @@
 <template>
   <div class="me-select-input" :class="{ readonly: readOnly }">
+    {{ multiple }}
     <a-popover
       placement="bottomLeft"
       trigger="click"
       overlayClassName="popoverbox"
       v-if="!readOnly"
+      v-model="visible"
     >
       <div slot="content">
         <div class="open">
@@ -103,11 +105,9 @@
           </div>
         </div>
       </div>
-      <div
-        class="input"
-        @click.self="openDialog"
-      >
-        <ul>
+      <div class="input" @click.self="openDialog">
+        <span class="span" v-if="!multiple">{{ selectValue[0] || "" }}</span>
+        <ul v-else>
           <li v-for="item in selectValue" :key="item">
             <span class="me-pr-1"> {{ item }} </span>
             <a-icon
@@ -125,7 +125,8 @@
       :class="{ readonly: readOnly }"
       v-else
     >
-      <ul>
+      <span class="span" v-if="!multiple">{{ selectValue[0] || "" }}</span>
+      <ul v-else>
         <li v-for="item in selectValue" :key="item">
           <span class="me-pr-1"> {{ item }} </span>
           <a-icon
@@ -155,6 +156,10 @@ export default {
       prop: Array,
       default: [],
     },
+    multiple: {
+      type: Boolean,
+      default: true,
+    },
     readOnly: {
       type: Boolean,
       default: false,
@@ -181,6 +186,7 @@ export default {
     this.$data.selectValue = this.$props.product;
   },
   data: () => ({
+    visible: false,
     items: [],
     selectValue: [],
     searchVal: "",
@@ -195,10 +201,22 @@ export default {
       this.$data.open = !this.$data.open;
     },
     addOrRemoveItem(flag, item) {
-      if (flag) {
-        this.$data.selectValue = without(this.$data.selectValue, item);
+      // flag== true, remove item
+      const { multiple } = this.$props;
+      if (multiple) {
+        if (flag) {
+          this.$data.selectValue = without(this.$data.selectValue, item);
+        } else {
+          this.$data.selectValue.push(item);
+        }
       } else {
-        this.$data.selectValue.push(item);
+        if (flag) {
+          this.$data.selectValue = [];
+        } else {
+          this.$data.selectValue = [];
+          this.$data.selectValue.push(item);
+          this.hidePopover();
+        }
       }
       this.syncData();
     },
@@ -247,6 +265,9 @@ export default {
     syncData() {
       this.$emit("input", this.$data.selectValue);
     },
+    hidePopover() {
+      this.$data.visible = false;
+    },
   },
 };
 </script>
@@ -262,6 +283,7 @@ $linkColor: #4c86ff;
     line-height: 23px;
     cursor: pointer;
     background: #fff;
+    min-height: 33px;
     &:focus {
       border: 1px solid $primaryColor;
     }
@@ -288,6 +310,11 @@ $linkColor: #4c86ff;
           transform: padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
         }
       }
+    }
+    .span {
+      padding-left: 10px;
+      display: inline-block;
+      padding-top: 3px;
     }
   }
 }
