@@ -315,6 +315,7 @@ $linkColor: #4c86ff;
       padding-left: 10px;
       display: inline-block;
       padding-top: 3px;
+      font-size: 16px;
     }
   }
 }
