@@ -1,6 +1,5 @@
 <template>
   <div class="me-select-input" :class="{ readonly: readOnly }">
-
     <a-popover
       placement="bottomLeft"
       trigger="click"
@@ -226,7 +225,7 @@ export default {
       if (searchVal) {
         setTimeout(() => {
           items.map((ele) => {
-            if (ele.indexOf(searchVal) > -1) {
+            if (ele.toString().indexOf(searchVal) > -1) {
               this.$data.searchResult.push(ele);
             }
           });
@@ -324,7 +323,7 @@ $linkColor: #4c86ff;
 .allval {
   max-height: 400px;
   overflow-y: auto;
-  margin-right:-16px;
+  margin-right: -16px;
   ul {
     padding-left: 0px;
   }
