@@ -40,6 +40,7 @@ components: {
 | ---:| --- | ---| --- |
 | value | Array | [] | Selected value |
 | allArr | Array | [] | Available options |
+| multiple | Boolean | true | Is multiple choice allowed |
 | searchText | String | "请输入" | Search box default |
 | readOnly | Boolean | false | Set input to readonly |
 | searchResultText | String | "未搜索到相关内容" | No search results |
