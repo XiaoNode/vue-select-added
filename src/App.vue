@@ -32,7 +32,10 @@
           <SelectAdded :allArr="items" v-model="selectValue" />
           <br />
           selectValue:{{ selectValue2 }}
-          <SelectAdded :allArr="items2" :multiple="false" v-model="selectValue2" />
+          <SelectAdded
+            :allArr="items2"
+            v-model="selectValue2"
+          />
           <span></span>
         </div>
 
@@ -55,7 +58,6 @@ export default {
   components: {
     SelectAdded,
   },
-
   data() {
     return {
       items: ["aa", "bb", "cc", "dd", "ee", "ff", "aaa"],
@@ -64,6 +66,11 @@ export default {
       items2: ["11", "22", "33", "44", "55", "66", "111"],
       selectValue2: ["22"],
     };
+  },
+  mounted() {
+    for (var i = 0; i < 1000; i++) {
+      this.items2.push(i);
+    }
   },
 };
 </script>

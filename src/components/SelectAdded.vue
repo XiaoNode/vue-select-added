@@ -1,6 +1,6 @@
 <template>
   <div class="me-select-input" :class="{ readonly: readOnly }">
-    {{ multiple }}
+
     <a-popover
       placement="bottomLeft"
       trigger="click"
@@ -322,6 +322,9 @@ $linkColor: #4c86ff;
 .additem,
 .searchval,
 .allval {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-right:-16px;
   ul {
     padding-left: 0px;
   }
