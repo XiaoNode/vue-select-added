@@ -1,5 +1,9 @@
 <template>
-  <div class="me-select-input" :class="{ readonly: readOnly }">
+  <div
+    class="me-select-input"
+    :class="{ readonly: readOnly }"
+    ref="selectinput"
+  >
     <a-popover
       placement="bottomLeft"
       trigger="click"
@@ -7,7 +11,7 @@
       v-if="!readOnly"
       v-model="visible"
     >
-      <div slot="content">
+      <div slot="content" :style="{ width: divWidth + 'px' }">
         <div class="open">
           <a-input
             :placeholder="searchText"
@@ -183,6 +187,8 @@ export default {
   mounted() {
     this.$data.items = this.$props.allArr;
     this.$data.selectValue = this.$props.product;
+
+    this.$data.divWidth = this.$refs.selectinput.clientWidth - 32;
   },
   data: () => ({
     visible: false,
@@ -194,6 +200,7 @@ export default {
     tempValue: [], // 添加的新属性
     addtemp: "",
     addtemping: false,
+    divWidth: 0,
   }),
   methods: {
     openDialog() {
@@ -221,7 +228,7 @@ export default {
     },
     goSearch() {
       const { items, searchVal, tempValue } = this.$data;
-      const allItems= items.concat(tempValue)
+      const allItems = items.concat(tempValue);
       this.$data.searchResult = [];
       if (searchVal) {
         setTimeout(() => {
@@ -277,6 +284,13 @@ $primaryColor: #4c86ff;
 $linkColor: #4c86ff;
 .me-select-input {
   position: relative;
+  // .popoverbox {
+  //   border: 1px solid #d9d9d9;
+  //   border-radius: 3px;
+  //   margin-top: 3px;
+  //   background: fff;
+  //   width: 100%;
+  // }
   .input {
     border: 1px solid #d9d9d9;
     border-radius: 2px;
@@ -350,12 +364,6 @@ $linkColor: #4c86ff;
     float: right;
   }
 }
-.popoverbox {
-  border: 1px solid #d9d9d9;
-  background: #ffffff;
-  border-radius: 3px;
-  margin-top: 3px;
-}
 
 .additem {
   border-top: 1px solid #e8e8e8;
@@ -387,7 +395,7 @@ $linkColor: #4c86ff;
   padding-top: 5px;
 }
 .me-pr-2 {
-    padding-right: 10px;
+  padding-right: 10px;
 }
 .me-status-skip {
   color: #a8a8b3;
@@ -401,3 +409,4 @@ $linkColor: #4c86ff;
   cursor: no-drop !important;
 }
 </style>
+<style></style>
