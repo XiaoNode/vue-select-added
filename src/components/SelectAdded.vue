@@ -111,7 +111,7 @@
             <span class="me-pr-1"> {{ item }} </span>
             <a-icon
               type="close"
-              class="hand me-status-skip me-fr me-pt-1 me-pr-2"
+              class="hand me-status-skip me-fr me-pt-1"
               @click.stop="addOrRemoveItem(true, item)"
             />
           </li>
@@ -130,7 +130,7 @@
           <span class="me-pr-1"> {{ item }} </span>
           <a-icon
             type="close"
-            class="hand me-status-skip me-fr me-pt-1 me-pr-2"
+            class="hand me-status-skip me-fr me-pt-1"
             :class="{ readonlyclose: readOnly }"
           />
         </li>
