@@ -30,14 +30,14 @@
               {{ item }}
               <a-icon
                 slot="prefix"
-                class="me-fr"
+                class="me-fr me-pr-2"
                 type="check"
                 v-if="selectValue.includes(item)"
               />
             </li>
           </ul>
         </div>
-        <div class="searchval" v-else>
+        <div class="searchval me-pt-2" v-else>
           <div v-if="searchResult.length != 0">
             <ul>
               <li
@@ -49,7 +49,7 @@
                 {{ item }}
                 <a-icon
                   slot="prefix"
-                  class="me-fr"
+                  class="me-fr me-pr-2"
                   type="check"
                   v-if="selectValue.includes(item)"
                 />
@@ -65,7 +65,7 @@
             <a-icon type="plus" class="me-status-link" />
             {{ addItemButtonText }}
           </h3>
-          <div class="addinput" v-if="addtemping">
+          <div class="addinput me-pr-2" v-if="addtemping">
             <a-space>
               <a-input
                 :placeholder="addItemText"
@@ -95,7 +95,7 @@
                 {{ item }}
                 <a-icon
                   slot="prefix"
-                  class="me-fr"
+                  class="me-fr me-pr-2"
                   type="check"
                   v-if="selectValue.includes(item)"
                 />
@@ -111,7 +111,7 @@
             <span class="me-pr-1"> {{ item }} </span>
             <a-icon
               type="close"
-              class="hand me-status-skip me-fr me-pt-1"
+              class="hand me-status-skip me-fr me-pt-1 me-pr-2"
               @click.stop="addOrRemoveItem(true, item)"
             />
           </li>
@@ -130,7 +130,7 @@
           <span class="me-pr-1"> {{ item }} </span>
           <a-icon
             type="close"
-            class="hand me-status-skip me-fr me-pt-1"
+            class="hand me-status-skip me-fr me-pt-1 me-pr-2"
             :class="{ readonlyclose: readOnly }"
           />
         </li>
@@ -220,11 +220,12 @@ export default {
       this.syncData();
     },
     goSearch() {
-      const { items, searchVal } = this.$data;
+      const { items, searchVal, tempValue } = this.$data;
+      const allItems= items.concat(tempValue)
       this.$data.searchResult = [];
       if (searchVal) {
         setTimeout(() => {
-          items.map((ele) => {
+          allItems.map((ele) => {
             if (ele.toString().indexOf(searchVal) > -1) {
               this.$data.searchResult.push(ele);
             }
@@ -336,6 +337,7 @@ $linkColor: #4c86ff;
     word-wrap: break-word;
     list-style: none;
     cursor: pointer;
+    margin-right: 15px;
     &:hover {
       color: #333;
       background-color: rgba(0, 0, 0, 0.04);
@@ -383,6 +385,9 @@ $linkColor: #4c86ff;
 }
 .me-pt-1 {
   padding-top: 5px;
+}
+.me-pr-2 {
+    padding-right: 10px;
 }
 .me-status-skip {
   color: #a8a8b3;
