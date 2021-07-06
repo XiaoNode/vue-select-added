@@ -7,7 +7,6 @@
     <a-popover
       placement="bottomLeft"
       trigger="click"
-      overlayClassName="popoverbox"
       v-if="!readOnly"
       v-model="visible"
     >
@@ -23,8 +22,8 @@
             <a-icon slot="prefix" type="search" />
           </a-input>
         </div>
-        <div class="allval me-pt-2" v-if="searchVal == ''">
-          <ul>
+        <div class="allval me-pt-2 outer1" v-if="searchVal == ''">
+          <ul class="scrollbar">
             <li
               v-for="item in items"
               :key="item"
@@ -34,7 +33,7 @@
               {{ item }}
               <a-icon
                 slot="prefix"
-                class="me-fr me-pr-2"
+                class="me-fr"
                 type="check"
                 v-if="selectValue.includes(item)"
               />
@@ -53,7 +52,7 @@
                 {{ item }}
                 <a-icon
                   slot="prefix"
-                  class="me-fr me-pr-2"
+                  class="me-fr"
                   type="check"
                   v-if="selectValue.includes(item)"
                 />
@@ -100,7 +99,7 @@
                 {{ item }}
                 <a-icon
                   slot="prefix"
-                  class="me-fr me-pr-2"
+                  class="me-fr"
                   type="check"
                   v-if="selectValue.includes(item)"
                 />
@@ -285,13 +284,6 @@ $primaryColor: #4c86ff;
 $linkColor: #4c86ff;
 .me-select-input {
   position: relative;
-  // .popoverbox {
-  //   border: 1px solid #d9d9d9;
-  //   border-radius: 3px;
-  //   margin-top: 3px;
-  //   background: fff;
-  //   width: 100%;
-  // }
   .input {
     border: 1px solid #d9d9d9;
     border-radius: 2px;
@@ -361,11 +353,7 @@ $linkColor: #4c86ff;
       color: $primaryColor;
     }
   }
-  .me-fr {
-    float: right;
-  }
 }
-
 .additem {
   border-top: 1px solid #e8e8e8;
   h3 {
@@ -374,14 +362,6 @@ $linkColor: #4c86ff;
     color: $linkColor;
     margin-bottom: 0px;
   }
-}
-.ant-popover-inner-content {
-  padding: 5px 10px !important;
-}
-.ant-popover-placement-bottom,
-.ant-popover-placement-bottomLeft,
-.ant-popover-placement-bottomRight {
-  padding-top: 0px;
 }
 .hand {
   cursor: pointer;
@@ -402,6 +382,9 @@ $linkColor: #4c86ff;
   color: #a8a8b3;
   font-size: 12px;
 }
+.me-fr {
+  float: right;
+}
 .readonly {
   cursor: no-drop !important;
   background: #f3f2f2 !important;
@@ -409,5 +392,24 @@ $linkColor: #4c86ff;
 .readonlyclose {
   cursor: no-drop !important;
 }
+.scrollbar {
+  margin: 0 auto;
+}
+.outer1::-webkit-scrollbar {
+  /*滚动条整体样式*/
+  width: 8px; /*高宽分别对应横竖滚动条的尺寸*/
+  height: 1px;
+}
+.outer1::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px rgba(39, 38, 38, 0.8);
+  background: #535353;
+}
+.outer1::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background: #ededed;
+}
 </style>
-<style></style>
