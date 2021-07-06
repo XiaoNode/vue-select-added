@@ -23,7 +23,7 @@
             <a-icon slot="prefix" type="search" />
           </a-input>
         </div>
-        <div class="allval" v-if="searchVal == ''">
+        <div class="allval me-pt-2" v-if="searchVal == ''">
           <ul>
             <li
               v-for="item in items"
@@ -75,6 +75,7 @@
                 :placeholder="addItemText"
                 v-model="addtemp"
                 :allowClear="true"
+                :style="{ width: divWidth - 50 + 'px' }"
               >
               </a-input>
               <a-icon type="check" class="hand" @click="pushTemp" />
@@ -88,7 +89,7 @@
               />
             </a-space>
           </div>
-          <div v-if="tempValue.length != 0">
+          <div v-if="tempValue.length != 0" class="me-pt-2">
             <ul>
               <li
                 v-for="item in tempValue"
