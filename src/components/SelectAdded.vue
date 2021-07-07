@@ -110,16 +110,18 @@
       </div>
       <div class="input" @click.self="openDialog">
         <span class="span" v-if="!multiple">{{ selectValue[0] || "" }}</span>
-        <ul v-else>
-          <li v-for="item in selectValue" :key="item">
-            <span class="me-pr-1"> {{ item }} </span>
-            <a-icon
-              type="close"
-              class="hand me-status-skip me-fr me-pt-1"
-              @click.stop="addOrRemoveItem(true, item)"
-            />
-          </li>
-        </ul>
+        <div v-else class="tags">
+          <transition-group name="list" tag="div">
+            <a-tag
+              closable
+              @close="addOrRemoveItem(true, item)"
+              v-for="item in selectValue"
+              :key="item"
+            >
+              {{ item }}
+            </a-tag>
+          </transition-group>
+        </div>
       </div>
     </a-popover>
     <div
@@ -129,16 +131,16 @@
       v-else
     >
       <span class="span" v-if="!multiple">{{ selectValue[0] || "" }}</span>
-      <ul v-else>
-        <li v-for="item in selectValue" :key="item">
-          <span class="me-pr-1"> {{ item }} </span>
-          <a-icon
-            type="close"
-            class="hand me-status-skip me-fr me-pt-1"
-            :class="{ readonlyclose: readOnly }"
-          />
-        </li>
-      </ul>
+      <div v-else class="tags">
+        <a-tag
+          :closable="!readOnly"
+          v-for="item in selectValue"
+          :key="item"
+          :class="{ readonlyclose: readOnly }"
+        >
+          {{ item }}
+        </a-tag>
+      </div>
     </div>
   </div>
 </template>
@@ -291,32 +293,9 @@ $linkColor: #4c86ff;
     cursor: pointer;
     background: #fff;
     min-height: 33px;
+    padding-bottom: 4px;
     &:focus {
       border: 1px solid $primaryColor;
-    }
-    ul {
-      padding-left: 10px;
-      display: inline-block;
-      margin: 0px;
-      li {
-        position: relative;
-        float: left;
-        max-width: 99%;
-        margin-right: 4px;
-        padding: 0 10px 0 10px;
-        overflow: hidden;
-        color: rgba(0, 0, 0, 0.65);
-        background-color: #fafafa;
-        border: 1px solid #e8e8e8;
-        border-radius: 2px;
-        height: 24px;
-        margin-top: 3px;
-        line-height: 24px;
-        font-size: 14px;
-        span {
-          transform: padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-        }
-      }
     }
     .span {
       padding-left: 10px;
@@ -324,6 +303,9 @@ $linkColor: #4c86ff;
       padding-top: 3px;
       font-size: 16px;
     }
+  }
+  .tags {
+    padding: 1px 3px;
   }
 }
 .additem,
@@ -378,6 +360,9 @@ $linkColor: #4c86ff;
 .me-pr-2 {
   padding-right: 10px;
 }
+.me-pr-1 {
+  padding-right: 5px;
+}
 .me-status-skip {
   color: #a8a8b3;
   font-size: 12px;
@@ -411,5 +396,14 @@ $linkColor: #4c86ff;
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   background: #ededed;
+}
+.list-enter-active,
+.list-leave-active {
+  transition: all .5s;
+}
+.list-enter,
+.list-leave-to {
+  opacity: 0;
+  transform: translateY(5px);
 }
 </style>
