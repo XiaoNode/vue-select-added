@@ -399,11 +399,10 @@ $linkColor: #4c86ff;
 }
 .list-enter-active,
 .list-leave-active {
-  transition: all .5s;
+  transition: opacity .5s;
 }
 .list-enter,
 .list-leave-to {
   opacity: 0;
-  transform: translateY(5px);
 }
 </style>
