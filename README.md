@@ -32,7 +32,7 @@ components: {
 <SelectAdded
   :allArr="items"
   v-model="selectValue"
-/>/>
+/>
 ```
 
 ## Props

@@ -146,7 +146,17 @@
 </template>
 
 <script>
+import Vue from "vue";
+import { Popover, Select, Input, Icon, Space, Tag } from "ant-design-vue";
+Vue.use(Select);
+Vue.use(Popover);
+Vue.use(Space);
+Vue.use(Icon);
+Vue.use(Input);
+Vue.use(Tag);
+import "ant-design-vue/dist/antd.css";
 import { without, indexOf } from "lodash";
+
 export default {
   model: {
     prop: "product",
@@ -399,7 +409,7 @@ $linkColor: #4c86ff;
 }
 .list-enter-active,
 .list-leave-active {
-  transition: opacity .5s;
+  transition: opacity 0.5s;
 }
 .list-enter,
 .list-leave-to {
