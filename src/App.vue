@@ -10,12 +10,13 @@
         href="https://github.com/XiaoNode/vue-select-added"
         target="_blank"
         >GitHub</a
-      ><a
+      >
+      <!-- <a
         class="btn"
         href="https://www.npmjs.com/package/vue-select-added"
         target="_blank"
         >NPM</a
-      >
+      > -->
     </section>
 
     <section class="main-content">
@@ -23,6 +24,16 @@
       <p><code>npm install vue-select-added</code></p>
       <p><code>yarn add vue-select-added</code></p>
 
+      <span class="tips">
+        <a-icon
+          type="exclamation-circle"
+          theme="twoTone"
+          two-tone-color="#ff4a4a"
+        />
+        npm or yarn installation seems to cause dependency problems. You can
+        also copy selectadded.vue in components to install the required
+        dependencies globally</span
+      >
       <!-- <h3>Playground</h3> -->
       <div class="playground">
         <div>
@@ -32,16 +43,16 @@
           <SelectAdded :allArr="items" v-model="selectValue" />
           <br />
           selectValue:{{ selectValue2 }}
-          <SelectAdded
-            :allArr="items2"
-            v-model="selectValue2"
-          />
-          <span></span>
+          <SelectAdded :allArr="items2" v-model="selectValue2" />
         </div>
-        
+
         <footer class="site-footer">
           <span class="site-footer-credits">
-            <a href="#">blog</a>
+            <a
+              href="https://github.com/XiaoNode/vue-select-added"
+              target="_blank"
+              >blog</a
+            >
           </span>
         </footer>
       </div>
