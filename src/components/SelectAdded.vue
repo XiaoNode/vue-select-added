@@ -243,8 +243,8 @@ export default {
       this.syncData();
     },
     goSearch() {
-      const { items, searchVal, tempValue } = this.$data;
-      const allItems = items.concat(tempValue);
+      const { items, searchVal, tempValue, tempItems } = this.$data;
+      const allItems = tempItems.concat(tempValue);
       this.$data.searchResult = [];
       if (searchVal) {
         setTimeout(() => {
