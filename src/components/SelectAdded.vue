@@ -22,7 +22,11 @@
             <a-icon slot="prefix" type="search" />
           </a-input>
         </div>
-        <div class="allval me-pt-2 outer1" v-if="searchVal == ''">
+        <div
+          class="allval me-pt-2 outer1"
+          v-if="searchVal == ''"
+          @scroll="scrollEvent($event)"
+        >
           <ul class="scrollbar">
             <li
               v-for="item in items"
@@ -146,7 +150,7 @@
 </template>
 
 <script>
-import { without, indexOf } from "lodash";
+import { without, indexOf, cloneDeep, take, slice } from "lodash";
 
 export default {
   model: {
@@ -190,9 +194,17 @@ export default {
   mounted() {
     this.$data.items = this.$props.allArr;
     this.$data.selectValue = this.$props.product;
-
     this.$data.divWidth = this.$refs.selectinput.clientWidth - 32;
+
+    this.$nextTick(() => {
+      if (this.$data.items.length > 50) {
+        console.log(this.$data.items.length, "updated!!");
+        this.$data.tempItems = cloneDeep(this.$data.items);
+        this.$data.items = take(this.$data.tempItems, 50);
+      }
+    });
   },
+  updated() {},
   data: () => ({
     visible: false,
     items: [],
@@ -204,6 +216,7 @@ export default {
     addtemp: "",
     addtemping: false,
     divWidth: 0,
+    tempItems: [],
   }),
   methods: {
     openDialog() {
@@ -277,6 +290,16 @@ export default {
     },
     hidePopover() {
       this.$data.visible = false;
+    },
+    scrollEvent(event) {
+      const { target } = event;
+      const { items, tempItems } = this.$data;
+      const scrollHeight = target.scrollHeight - target.scrollTop;
+      const clientHeight = target.clientHeight;
+      if (scrollHeight == clientHeight && items.length != tempItems.length) {
+        const addItem = slice(tempItems, items.length, items.length + 50);
+        this.$data.items = this.$data.items.concat(addItem);
+      }
     },
   },
 };

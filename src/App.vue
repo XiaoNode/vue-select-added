@@ -73,9 +73,8 @@ export default {
     return {
       items: ["aa", "bb", "cc", "dd", "ee", "ff", "aaa"],
       selectValue: ["dd"],
-
-      items2: ["11", "22", "33", "44", "55", "66", "111"],
-      selectValue2: ["22"],
+      items2: [],
+      selectValue2: [22],
     };
   },
   mounted() {
